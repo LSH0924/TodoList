@@ -1,0 +1,50 @@
+div.TodoInfo {
+  margin: 1% 0;
+  border: 1px solid #999;
+  border-radius: 5px;
+  width: 96%;
+  height: 20%;
+  padding: 2%;
+  background: #fdfdfd;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+div.TodoInfo label {
+  margin: 0 2%;
+  display: inline-block;
+  width: 46%;
+  vertical-align: top;
+  font-size: 0.7em;
+  color: #666;
+}
+
+div.TodoInfo label.Date strong {
+  font-size: 1.5em;
+}
+
+div.TodoInfo label.D-Day {
+  text-align: right;
+  font-weight: bolder;
+  font-size: 2em;
+}
+
+div.TodoInfo p {
+  margin: 2%;
+  padding: 1%;
+  width: 94%;
+  word-wrap: normal;
+}
+
+div.TodoInfo button {
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  height: 30%;
+  background: skyblue;
+  box-shadow: 1px 1px 1px teal;
+  color: white;
+  font-weight: bolder;
+  font-size: 1.1em;
+  letter-spacing: 1px;
+}

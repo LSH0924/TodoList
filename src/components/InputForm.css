@@ -1,0 +1,58 @@
+.InputForm {
+  border: 1px solid #999;
+  border-radius: 5px;
+  width: 96%;
+  height: 20%;
+  padding: 2%;
+  background: #fefefe;
+}
+
+.InputForm input,
+.InputForm textarea {
+  border: 1px solid #999;
+  border-radius: 5px;
+}
+
+.InputForm input[name="title"] {
+  border: none;
+  border-bottom: 1px solid #999;
+  border-radius: 0;
+  width: 98%;
+  padding-left: 2%;
+}
+
+.InputForm div.DateArea label {
+  display: inline-block;
+  width: 30%;
+}
+
+.InputForm div.DateArea input[type="date"] {
+  margin-top: 2%;
+  border: none;
+  border-bottom: 1px solid #999;
+  border-radius: 0;
+  color: #999;
+}
+
+.InputForm input[name="content"],
+.InputForm textarea[name="content"] {
+  margin-top: 2%;
+  width: 98%;
+  padding: 1%;
+  background: whitesmoke;
+}
+
+.InputForm textarea[name="content"] {
+  min-height: 80px;
+  max-height: 80%;
+}
+
+.InputForm button[type="submit"],
+.InputForm button[type="reset"] {
+  margin-top: 2%;
+  margin-right: 1%;
+  border: 1px solid #999;
+  border-radius: 5px;
+  width: 30%;
+  background: whitesmoke;
+}
