@@ -3,36 +3,29 @@ import "./todoInfo.css";
 
 class TodoInfo extends Component {
   static defaultProps = {
-    key: 0,
-    registDate: "",
-    deadLine: "",
-    content: "NoContent"
+    todoInfo: {
+      key: 0,
+      importance: "blue",
+      isComplete: false,
+      content: "NoContent"
+    },
+    onComplete: () =>
+      console.log("Error: this.props에서 onComplete함수를 찾을 수 없습니다.")
+  };
+
+  handleComplete = () => {
+    this.props.onComplete(this.props.todoInfo.key);
   };
 
   render() {
-    const { registDate, deadLine, content, isComplete } = this.props.todoInfo;
-    const computeDDay = (registDate, deadLine) => {
-      const regist = new Date(registDate);
-      const dead = new Date(deadLine);
-
-      return Math.floor((dead - regist) / (1000 * 60 * 60 * 24));
-    };
-    const dDay = computeDDay(registDate, deadLine);
+    const { content, importance, isComplete } = this.props.todoInfo;
 
     return (
       <div className="TodoInfo">
-        <label className="Date">
-          {registDate}
-          <strong> ~ {deadLine}</strong>
-        </label>
-        {isComplete ? (
-          <label className="D-Day"> D-{dDay === 0 ? "DAY" : dDay}</label>
-        ) : (
-          <label className="D-Day">Complete</label>
-        )}
-
-        <p>{content}</p>
-        <button>Complete</button>
+        <div className={importance} />
+        <p className={isComplete && "LineThrow"}>{content}</p>
+        <button onClick={this.handleComplete}>Complete</button>
+        <button className="Remove">Remove</button>
       </div>
     );
   }

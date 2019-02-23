@@ -4,9 +4,5 @@ import TodoList from "./components/TodoList/TodoList";
 
 import "./styles.css";
 
-function App() {
-  return <TodoList />;
-}
-
 const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+ReactDOM.render(<TodoList />, rootElement);

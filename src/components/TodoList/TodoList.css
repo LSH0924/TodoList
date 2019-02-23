@@ -1,3 +1,8 @@
+div.TodoList {
+  margin: auto;
+  max-width: 55vh;
+}
+
 select.TodoListFilter,
 input[type="search"] {
   border: 1px solid #999;
@@ -12,7 +17,8 @@ select.TodoListFilter {
   width: 24%;
 }
 
-button.inputTodoList {
+button.showRegistForm {
+  z-index: 10;
   position: fixed;
   bottom: 3%;
   right: 3%;
@@ -23,6 +29,6 @@ button.inputTodoList {
   height: 50px;
   background: skyblue;
   color: white;
-  font-size: 4em;
+  font-size: 200%;
   line-height: 0;
 }
