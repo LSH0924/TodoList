@@ -2,7 +2,6 @@ body {
   background-color: whitesmoke;
 }
 
-.App {
-  font-family: sans-serif;
-  text-align: center;
+*:focus {
+  outline: none;
 }
