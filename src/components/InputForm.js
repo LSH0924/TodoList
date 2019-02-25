@@ -37,20 +37,10 @@ class InputForm extends Component {
 
     // state값 초기화
     this.setState({
-      importance: "skyblue",
       title: "",
       content: ""
     });
-  };
-
-  // Reset button event
-  handleReset = () => {
-    // state값 초기화
-    this.setState({
-      importance: "",
-      title: "",
-      content: ""
-    });
+    console.log(this.state);
   };
 
   render() {
@@ -64,30 +54,36 @@ class InputForm extends Component {
             {inputType ? (
               <React.Fragment>
                 <label>중요도 : </label>
-                <input
-                  type="radio"
-                  name="importance"
-                  id="importance1"
-                  value="skyblue"
-                  onChange={this.handleChange}
-                />
-                <label htmlFor="importance1">일반</label>
-                <input
-                  type="radio"
-                  name="importance"
-                  id="importance2"
-                  value="orange"
-                  onChange={this.handleChange}
-                />
-                <label htmlFor="importance2">중요</label>
-                <input
-                  type="radio"
-                  name="importance"
-                  id="importance3"
-                  value="red"
-                  onChange={this.handleChange}
-                />
-                <label htmlFor="importance3">매우중요</label>
+                <label htmlFor="importance1" className="Radio">
+                  <input
+                    type="radio"
+                    name="importance"
+                    id="importance1"
+                    value="skyblue"
+                    onChange={this.handleChange}
+                  />
+                  일반
+                </label>
+                <label htmlFor="importance2" className="Radio">
+                  <input
+                    type="radio"
+                    name="importance"
+                    id="importance2"
+                    value="orange"
+                    onChange={this.handleChange}
+                  />
+                  중요
+                </label>
+                <label htmlFor="importance3" className="Radio">
+                  <input
+                    type="radio"
+                    name="importance"
+                    id="importance3"
+                    value="red"
+                    onChange={this.handleChange}
+                  />
+                  매우중요
+                </label>
                 <input
                   type="text"
                   name="content"
@@ -115,9 +111,6 @@ class InputForm extends Component {
               </React.Fragment>
             )}
             <button type="submit">Registration</button>
-            <button type="reset" onClick={this.handleReset}>
-              Reset
-            </button>
           </form>
         </div>
       </div>
