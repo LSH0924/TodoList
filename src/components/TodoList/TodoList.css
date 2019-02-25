@@ -44,6 +44,11 @@ button.showRegistForm {
   transition-timing-function: ease-in-out;
 }
 
+button.showRegistForm:focus {
+  outline: none;
+}
+
+
 button.showRegistForm.HideRegistForm {
   transition-property: transform background-color;
   transform: rotate(320deg);
