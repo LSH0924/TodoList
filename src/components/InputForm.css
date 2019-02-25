@@ -1,5 +1,7 @@
 div.BackgroundInpufForm {
-  z-index: 9999;
+  position: absolute;
+  top: 0;
+  z-index: 50;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.288);
@@ -7,10 +9,12 @@ div.BackgroundInpufForm {
 
 div.InputForm {
   margin: auto;
+  margin-top: 35vh;
   border: 1px solid #999;
   border-radius: 5px;
-  width: 55vh;
-  height: 20%;
+  width: 50vh;
+  min-width: 30vh;
+  min-height: 50px;
   padding: 2%;
   background: #fefefe;
 }
