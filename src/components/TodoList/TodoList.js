@@ -99,7 +99,12 @@ class TodoList extends Component {
           />
           {list}
         </div>
-        <button className="showRegistForm" onClick={this.handleShowRegist}>
+        <button
+          className={
+            "showRegistForm " + (this.state.showRegistForm && "HideRegistForm")
+          }
+          onClick={this.handleShowRegist}
+        >
           +
         </button>
       </React.Fragment>

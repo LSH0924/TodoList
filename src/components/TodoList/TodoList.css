@@ -33,8 +33,23 @@ button.showRegistForm {
   box-shadow: 1px 1px 3px teal;
   width: 50px;
   height: 50px;
-  background: skyblue;
+  background-color: skyblue;
   color: white;
   font-size: 200%;
   line-height: 0;
+  transition-property: transform background-color;
+  transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  transition-duration: 0.7s;
+  transition-timing-function: ease-in-out;
+}
+
+button.showRegistForm.HideRegistForm {
+  transition-property: transform background-color;
+  transform: rotate(320deg);
+  -webkit-transform: rotate(320deg);
+  transition-duration: 0.7s;
+  transition-timing-function: ease-in-out;
+  background-color: rgb(255, 80, 80);
+  box-shadow: 1px 1px 3px brown;
 }
