@@ -37,7 +37,7 @@ class InputForm extends Component {
 
     // state값 초기화
     this.setState({
-      importance: "",
+      importance: "skyblue",
       title: "",
       content: ""
     });

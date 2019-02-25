@@ -4,24 +4,12 @@ import TodoInfo from "./TodoInfo";
 import "./todoList.css";
 
 class TodoList extends Component {
-  key = 1;
+  key = 0;
   state = {
-    todoInfo: [
-      {
-        key: 0,
-        importance: "skyblue",
-        isComplete: false,
-        content:
-          "R e a c t R e a c t R e a c t R e a c t R e a c t R e a c t R e a c t R e a c t R e a c t"
-      },
-      {
-        key: 1,
-        importance: "orange",
-        isComplete: true,
-        content: "Lorem"
-      }
-    ],
-    showRegistForm: false
+    todoInfo: [],
+    showRegistForm: false,
+    filtering: "",
+    keyword: ""
   };
 
   handleShowRegist = () => {
@@ -33,7 +21,8 @@ class TodoList extends Component {
   handleRegist = data => {
     this.setState({
       todoInfo: this.state.todoInfo.concat({
-        key: ++this.key,
+        key: this.key++,
+        isComplete: false,
         ...data
       })
     });
@@ -45,38 +34,74 @@ class TodoList extends Component {
     this.setState({
       todoInfo: [
         ...todoInfo.slice(0, index),
-        { ...todoInfo[index], isComplete: !todoInfo[index].isComplete },
+        {
+          ...todoInfo[index],
+          isComplete: !todoInfo[index].isComplete
+        },
         ...todoInfo.slice(index + 1, todoInfo.length)
       ]
     });
   };
 
+  handleRemove = key => {
+    const { todoInfo } = this.state;
+    this.setState({ todoInfo: todoInfo.filter(info => info.key !== key) });
+  };
+
+  handleChange = e => {
+    const { name, value } = e.target;
+    console.log(name, value);
+    this.setState({ [name]: value });
+  };
+
   render() {
-    const list = this.state.todoInfo.map(info => (
-      <TodoInfo
-        key={info.key}
-        todoInfo={info}
-        onComplete={this.handleComplete}
-      />
-    ));
+    const { filtering, keyword } = this.state;
+    const list = this.state.todoInfo.map(info => {
+      const jsx = (
+        <TodoInfo
+          key={info.key}
+          todoInfo={info}
+          onComplete={this.handleComplete}
+          onRemove={this.handleRemove}
+        />
+      );
+      return filtering !== "complete"
+        ? !info.isComplete &&
+            info.importance.indexOf(filtering) !== -1 &&
+            info.content.indexOf(keyword) !== -1 &&
+            jsx
+        : info.isComplete && info.content.indexOf(keyword) !== -1 && jsx;
+    });
     return (
       <React.Fragment>
-        <div className="TodoList">
-          <select className="TodoListFilter">
-            <option>보통</option>
-            <option>중요</option>
-            <option>매우중요</option>
-          </select>
-          <input type="search" value="" placeholder="Search" />
-          <br />
-          <button className="showRegistForm" onClick={this.handleShowRegist}>
-            +
-          </button>
-          {list}
-        </div>
         {this.state.showRegistForm && (
           <InputForm inputType="TodoList" onRegist={this.handleRegist} />
         )}
+        <div className="TodoList">
+          <h1>Todo List</h1>
+          <select
+            name="filtering"
+            className="TodoListFilter"
+            onChange={this.handleChange}
+          >
+            <option value="" />
+            <option value="skyblue">보통</option>
+            <option value="orange">중요</option>
+            <option value="red">매우중요</option>
+            <option value="complete">완료목록</option>
+          </select>
+          <input
+            type="search"
+            name="keyword"
+            value={keyword}
+            onChange={this.handleChange}
+            placeholder="Search"
+          />
+          {list}
+        </div>
+        <button className="showRegistForm" onClick={this.handleShowRegist}>
+          +
+        </button>
       </React.Fragment>
     );
   }
