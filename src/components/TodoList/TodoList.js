@@ -75,7 +75,11 @@ class TodoList extends Component {
     return (
       <React.Fragment>
         {this.state.showRegistForm && (
-          <InputForm inputType="TodoList" onRegist={this.handleRegist} />
+          <InputForm
+            inputType="TodoList"
+            onRegist={this.handleRegist}
+            onClick={this.handleShowRegist}
+          />
         )}
         <div className="TodoList">
           <h1>Todo List</h1>

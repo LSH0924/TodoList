@@ -2,10 +2,17 @@ import React, { Component } from "react";
 import "./InputForm.css";
 
 class InputForm extends Component {
+  static defaultProps = {
+    inputType: "",
+    onRegist: () =>
+      console.log("Error: this.props에서 onRegist을 찾을 수 없습니다."),
+    onClick: () =>
+      console.log("Error: this.props에서 onClick을 찾을 수 없습니다.")
+  };
+
   /** importance skyblue : normal / orange : importante / red : very importante */
   state = {
     importance: "skyblue",
-    title: "",
     content: ""
   };
   // 입력정보를 변경할 때마다 실행
@@ -20,13 +27,7 @@ class InputForm extends Component {
     // 페이지 리로딩 방지
     e.preventDefault();
 
-    // title, content 입력확인
-    if (this.props.inputType === "Memo") {
-      if (this.state.title === "") {
-        alert("Title is Empty");
-        return false;
-      }
-    }
+    //  content 입력확인
     if (this.state.content === "") {
       alert("Content is Empty");
       return false;
@@ -37,79 +38,57 @@ class InputForm extends Component {
 
     // state값 초기화
     this.setState({
-      title: "",
       content: ""
     });
-    console.log(this.state);
   };
 
-  render() {
-    const { title, content } = this.state;
-    const inputType = this.props.inputType === "TodoList";
+  handleShow = e => this.props.onClick();
 
+  render() {
     return (
-      <div className="BackgroundInpufForm">
-        <div className="InputForm">
+      <div className="BackgroundInpufForm" onClick={this.handleShow}>
+        <div className="InputForm" onClick={e => e.stopPropagation()}>
           <form onSubmit={this.handleSubmit}>
-            {inputType ? (
-              <React.Fragment>
-                <label>중요도 : </label>
-                <label htmlFor="importance1" className="Radio">
-                  <input
-                    type="radio"
-                    name="importance"
-                    id="importance1"
-                    value="skyblue"
-                    onChange={this.handleChange}
-                  />
-                  일반
-                </label>
-                <label htmlFor="importance2" className="Radio">
-                  <input
-                    type="radio"
-                    name="importance"
-                    id="importance2"
-                    value="orange"
-                    onChange={this.handleChange}
-                  />
-                  중요
-                </label>
-                <label htmlFor="importance3" className="Radio">
-                  <input
-                    type="radio"
-                    name="importance"
-                    id="importance3"
-                    value="red"
-                    onChange={this.handleChange}
-                  />
-                  매우중요
-                </label>
+            <React.Fragment>
+              <label>중요도 : </label>
+              <label htmlFor="importance1" className="Radio">
                 <input
-                  type="text"
-                  name="content"
-                  placeholder="Content"
-                  value={content}
+                  type="radio"
+                  name="importance"
+                  id="importance1"
+                  value="skyblue"
                   onChange={this.handleChange}
                 />
-              </React.Fragment>
-            ) : (
-              <React.Fragment>
+                일반
+              </label>
+              <label htmlFor="importance2" className="Radio">
                 <input
-                  type="text"
-                  name="title"
-                  placeholder="Title"
-                  value={title}
+                  type="radio"
+                  name="importance"
+                  id="importance2"
+                  value="orange"
                   onChange={this.handleChange}
                 />
-                <textarea
-                  type="text"
-                  name="content"
-                  placeholder="Content"
-                  value={content}
+                중요
+              </label>
+              <label htmlFor="importance3" className="Radio">
+                <input
+                  type="radio"
+                  name="importance"
+                  id="importance3"
+                  value="red"
                   onChange={this.handleChange}
                 />
-              </React.Fragment>
-            )}
+                매우중요
+              </label>
+              <input
+                type="text"
+                name="content"
+                placeholder="Content"
+                value={this.state.content}
+                onChange={this.handleChange}
+              />
+            </React.Fragment>
             <button type="submit">Registration</button>
           </form>
         </div>
