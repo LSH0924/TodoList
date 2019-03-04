@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./todoInfo.css";
+import "../../css/todoInfo.css";
 
 class TodoInfo extends Component {
   static defaultProps = {

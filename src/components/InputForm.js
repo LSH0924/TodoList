@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./InputForm.css";
+import "../css/InputForm.css";
 
 class InputForm extends Component {
   static defaultProps = {

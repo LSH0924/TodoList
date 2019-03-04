@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import "./search.css";
+import "../../css/search.css";
 
 class Search extends Component {
   static defaultProps = {
