@@ -1,7 +1,47 @@
 body {
   background-color: whitesmoke;
+  padding: 0;
+  margin: 0;
 }
 
 *:focus {
   outline: none;
+}
+
+div.box {
+  position: relative;
+  z-index: 5;
+  margin: auto;
+  max-width: 55vh;
+}
+
+div.box button.showRegistForm {
+  position: fixed;
+  z-index: 1000;
+  bottom: 3%;
+  right: 3%;
+  border: none;
+  border-radius: 25px;
+  box-shadow: 1px 1px 3px teal;
+  width: 50px;
+  height: 50px;
+  background-color: skyblue;
+  color: white;
+  font-size: 200%;
+  line-height: 0;
+  transition-property: transform background-color;
+  transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  transition-duration: 0.7s;
+  transition-timing-function: ease-in-out;
+}
+
+div.box button.showRegistForm.HideRegistForm {
+  transition-property: transform background-color;
+  transform: rotate(320deg);
+  -webkit-transform: rotate(320deg);
+  transition-duration: 0.7s;
+  transition-timing-function: ease-in-out;
+  background-color: rgb(255, 80, 80);
+  box-shadow: 1px 1px 3px brown;
 }

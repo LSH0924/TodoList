@@ -8,34 +8,34 @@ class TodoInfo extends Component {
       importance: "skyblue",
       isComplete: false,
       content: "NoContent"
-    },
-    onComplete: () =>
-      console.log("Error: this.props에서 onComplete함수를 찾을 수 없습니다."),
-    onRemove: () =>
-      console.log("Error: this.props에서 onRemove함수를 찾을 수 없습니다.")
+    }
   };
 
-  handleComplete = () => this.props.onComplete(this.props.todoInfo.key);
+  handleComplete = () => {
+    const { onComplete, todoInfo } = this.props;
+    onComplete(todoInfo.key);
+  };
 
-  handleRemove = () => this.props.onRemove(this.props.todoInfo.key);
+  handleRemove = () => {
+    const { onRemove, todoInfo } = this.props;
+    onRemove(todoInfo.key);
+  };
 
   render() {
+    console.log("Rander TodoInfo");
     const { content, importance, isComplete } = this.props.todoInfo;
     return (
       <div className="TodoInfo">
         <div className={importance} />
         <p className={isComplete ? "LineThrow" : ""}>{content}</p>
-        {isComplete ? (
-          <button onClick={this.handleComplete}>Revert</button>
-        ) : (
-          <button onClick={this.handleComplete}>Complete</button>
-        )}
+        <button onClick={this.handleComplete}>
+          {isComplete ? "取り消し" : "完了"}
+        </button>
         <button className="Remove" onClick={this.handleRemove}>
-          Remove
+          削除
         </button>
       </div>
     );
   }
 }
-
 export default TodoInfo;

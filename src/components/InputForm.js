@@ -40,6 +40,8 @@ class InputForm extends Component {
     this.setState({
       content: ""
     });
+
+    this.handleShow();
   };
 
   handleShow = e => this.props.onClick();
@@ -50,7 +52,7 @@ class InputForm extends Component {
         <div className="InputForm" onClick={e => e.stopPropagation()}>
           <form onSubmit={this.handleSubmit}>
             <React.Fragment>
-              <label>중요도 : </label>
+              <label>重要度 : </label>
               <label htmlFor="importance1" className="Radio">
                 <input
                   type="radio"
@@ -59,7 +61,7 @@ class InputForm extends Component {
                   value="skyblue"
                   onChange={this.handleChange}
                 />
-                일반
+                普通
               </label>
               <label htmlFor="importance2" className="Radio">
                 <input
@@ -69,7 +71,7 @@ class InputForm extends Component {
                   value="orange"
                   onChange={this.handleChange}
                 />
-                중요
+                　重要
               </label>
               <label htmlFor="importance3" className="Radio">
                 <input
@@ -79,7 +81,7 @@ class InputForm extends Component {
                   value="red"
                   onChange={this.handleChange}
                 />
-                매우중요
+                必
               </label>
               <input
                 type="text"
@@ -89,7 +91,7 @@ class InputForm extends Component {
                 onChange={this.handleChange}
               />
             </React.Fragment>
-            <button type="submit">Registration</button>
+            <button type="submit">登録</button>
           </form>
         </div>
       </div>
